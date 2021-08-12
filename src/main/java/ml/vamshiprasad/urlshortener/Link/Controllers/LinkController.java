@@ -25,8 +25,8 @@ public class LinkController {
     }
 
     @PostMapping("/postURL")
-    public void addNewLink(@RequestBody Linke linke){
-        linkService.createNewLink(linke);
+    public Linke addNewLink(@RequestBody Linke linke){
+        return linkService.createNewLink(linke);
     }
 
 

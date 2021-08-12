@@ -24,7 +24,8 @@ public class LinkService {
         else throw new IllegalStateException("URL doesn't exist with ID: "+id);
     }
 
-    public void createNewLink(Linke linke){
-        linkRepository.save(linke);
+    public Linke createNewLink(Linke linke){
+        Linke link = linkRepository.save(linke);
+        return link;
     }
 }
