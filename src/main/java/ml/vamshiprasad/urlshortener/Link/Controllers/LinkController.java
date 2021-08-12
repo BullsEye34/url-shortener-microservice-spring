@@ -1,11 +1,11 @@
 package ml.vamshiprasad.urlshortener.Link.Controllers;
 
+import ml.vamshiprasad.urlshortener.Link.Schema.Link;
 import ml.vamshiprasad.urlshortener.Link.Service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/v1/urlShortener")
@@ -18,7 +18,12 @@ public class LinkController {
     }
 
     @GetMapping("/getURL/{id}")
-    public String getURL(@PathVariable("id") Long id){
+    public Optional<Link> getURL(@PathVariable("id") Long id){
         return linkService.getURL(id);
+    }
+
+    @PostMapping("/postURL")
+    public void addNewLink(@RequestBody Link link){
+        linkService.createNewLink(link);
     }
 }
