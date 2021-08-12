@@ -3,9 +3,11 @@ package ml.vamshiprasad.urlshortener.Link.Service;
 import ml.vamshiprasad.urlshortener.Link.Repository.LinkRepository;
 import ml.vamshiprasad.urlshortener.Link.Schema.Link;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
+@Service
 public class LinkService {
     private final LinkRepository linkRepository;
 
