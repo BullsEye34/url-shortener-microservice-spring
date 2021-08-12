@@ -1,9 +1,10 @@
 package ml.vamshiprasad.urlshortener.Link.Controllers;
 
-import ml.vamshiprasad.urlshortener.Link.Schema.Link;
+import ml.vamshiprasad.urlshortener.Link.Schema.Linke;
 import ml.vamshiprasad.urlshortener.Link.Service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.Optional;
 
@@ -18,12 +19,15 @@ public class LinkController {
     }
 
     @GetMapping("/getURL/{id}")
-    public Optional<Link> getURL(@PathVariable("id") Long id){
-        return linkService.getURL(id);
+    public ModelAndView method(@PathVariable("id") Long id) {
+        Linke linke = linkService.getURL(id);
+        return new ModelAndView("redirect:" + linke.getUrl());
     }
 
     @PostMapping("/postURL")
-    public void addNewLink(@RequestBody Link link){
-        linkService.createNewLink(link);
+    public void addNewLink(@RequestBody Linke linke){
+        linkService.createNewLink(linke);
     }
+
+
 }

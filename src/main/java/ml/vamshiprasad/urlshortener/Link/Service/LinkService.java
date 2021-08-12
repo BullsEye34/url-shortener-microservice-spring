@@ -1,7 +1,7 @@
 package ml.vamshiprasad.urlshortener.Link.Service;
 
 import ml.vamshiprasad.urlshortener.Link.Repository.LinkRepository;
-import ml.vamshiprasad.urlshortener.Link.Schema.Link;
+import ml.vamshiprasad.urlshortener.Link.Schema.Linke;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,15 +16,15 @@ public class LinkService {
         this.linkRepository = linkRepository;
     }
 
-    public Optional<Link> getURL(Long id) {
-        Optional<Link> findLink = linkRepository.findLinkByID(id);
-        if(!findLink.isPresent()){
-            throw new IllegalStateException("URL doesn't exist with ID: "+id);
+    public Linke getURL(Long id) {
+        Optional<Linke> findLink = linkRepository.findLinkeBylinkID(id);
+        if(findLink.isPresent()){
+            return findLink.get();
         }
-        else return linkRepository.findById(id);
+        else throw new IllegalStateException("URL doesn't exist with ID: "+id);
     }
 
-    public void createNewLink(Link link){
-        linkRepository.save(link);
+    public void createNewLink(Linke linke){
+        linkRepository.save(linke);
     }
 }
