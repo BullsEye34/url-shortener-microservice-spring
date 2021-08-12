@@ -28,6 +28,4 @@ public class LinkController {
     public Linke addNewLink(@RequestBody Linke linke){
         return linkService.createNewLink(linke);
     }
-
-
 }
