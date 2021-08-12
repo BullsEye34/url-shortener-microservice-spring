@@ -19,6 +19,6 @@ public class LinkController {
 
     @GetMapping("/getURL/{id}")
     public String getURL(@PathVariable("id") Long id){
-        return ;
+        return linkService.getURL(id);
     }
 }
